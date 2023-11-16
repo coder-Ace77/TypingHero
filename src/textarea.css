@@ -1,0 +1,27 @@
+.main-box {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-rows: 80%;
+    grid-template-columns: 80%;
+}
+
+.text-box {
+    text-align: justify;
+    font-size: x-large;
+    color: bisque;
+}
+
+div[contentEditable="true"]:focus {
+    outline: none;
+    /* This will remove the default focus border */
+    border: 1px solid transparent;
+    /* Set the border to transparent to hide it */
+}
+
+div[contentEditable="true"]::selection {
+    background-color: transparent;
+}
