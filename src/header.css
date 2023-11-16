@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "JetBrainsMonoNL";
+  src: url("./font/JetBrainsMonoNL-Regular.ttf") format(ttf);
+}
+
+.logo {
+  height: 100px;
+  margin-left: 100px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: start;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto; /* Adjust columns as needed */
+  grid-gap: 30px; /* Adjust gap between items */
+}
+
+.grid-item {
+  border: 1px solid #000;
+  padding: 20px; /* Optional: Adjust padding */
+}
+.test-duration {
+  font-size: 20px;
+  color: white;
+  display: grid;
+  column-gap: 2px;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+
+.test-times {
+  background-color: #000;
+  display: grid;
+  /* column-gap: px; */
+  grid-template-columns: auto auto auto auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
+}
+.time-duration-button {
+  /* width: 30px; */
+  /* height: 30px; */
+  background-color: transparent;
+  border: none;
+  color: gray;
+  font-size: 18px;
+}
+
+.time-duration-button:hover {
+  cursor: pointer;
+  color: antiquewhite;
+  border: 0px solid transparent;
+  border-radius: 20px;
+  background-color: grey;
+  transition-duration: 0.5s;
+}
+
+#selected {
+  color: aliceblue;
+}
