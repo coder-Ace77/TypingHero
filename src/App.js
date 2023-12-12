@@ -1,11 +1,8 @@
-import "./App.css";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-// import Logo from "./logo.js";
-
-import Header from "./header.js";
-import TextArea from "./textarea.js";
-import "./font.css";
-import Footer from './footer.js'
+import "./css/App.css";
+import Header from "./header/header.js";
+import TextArea from "./textarea/textarea.js";
+import "./css/font.css";
+import Footer from './footer/footer.js'
 
 
 function App() {
@@ -14,7 +11,7 @@ function App() {
       <Header />
       <TextArea />
       <div>Keyboard</div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "JetBrainsMonoNL";
-  src: url("./font/JetBrainsMonoNL-Regular.ttf") format(ttf);
+  src: url("./../font/JetBrainsMonoNL-Regular.ttf") format(ttf);
 }
 
 .myfont {
