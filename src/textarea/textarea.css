@@ -6,16 +6,18 @@
     align-items: center;
     display: grid;
     grid-template-rows: 80%;
-    grid-template-columns: 80% ;
+    grid-template-columns: 80%;
+    font-family: Courier, monospace;
+    letter-spacing: 0.1px;
     /* height: 50vh; */
 }
 
-.side-menu:hover{
+.side-menu:hover {
     left: 0px;
     transition: all ease-in-out 0.5s;
 }
 
-.side-menu{
+.side-menu {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -29,13 +31,13 @@
     transition: all ease-in-out 0.5s;
 }
 
-.settings-icon:hover{
+.settings-icon:hover {
     cursor: pointer;
     rotate: 45deg;
     transition: all ease 0.5s;
 }
 
-.settings-icon{
+.settings-icon {
     rotate: 0deg;
     transition: all ease 0.5s;
 }
@@ -57,4 +59,15 @@ div[contentEditable="true"]:focus {
 
 div[contentEditable="true"]::selection {
     background-color: transparent;
+}
+
+.inputBox {
+    position: relative;
+    z-index: -100;
+    width: 0px;
+    height: 0px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: transparent;
 }
