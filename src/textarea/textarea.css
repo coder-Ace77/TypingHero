@@ -71,3 +71,11 @@ div[contentEditable="true"]::selection {
     background-color: transparent;
     color: transparent;
 }
+
+.correct {
+    color: rgb(3, 233, 3)
+}
+
+.incorrect {
+    color: rgb(255, 45, 45)
+}

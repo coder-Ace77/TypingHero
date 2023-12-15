@@ -1,9 +1,10 @@
 import React, { useState, useRef } from "react";
 import './textarea.css';
 
-var text = "$lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good mylorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my";
+var text = "|lorem ipsum hello world my name is good lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good mylorem ipsum hello world my name is good my lorem ipsum hello world my name is good my lorem ipsum hello world my name is good my";
 var ctext = text;
 var textarray = text.split("");
+var userInput = [];
 var index = 0;
 
 function TextArea() {
@@ -48,6 +49,7 @@ function TextArea() {
     const handleInputChange = (e) => {
 
         var x = true;
+
         // backspace handler
         x = backspaceHandler(e);
 
@@ -57,7 +59,6 @@ function TextArea() {
         // check space and non space
         x = x && checkspace(e);
 
-        // new line
         if (x) {
             textarray[index] = e.key;
             textarray[index + 1] = "\u007C";
@@ -72,10 +73,27 @@ function TextArea() {
         inputRef.current.focus();
     };
 
+    const inputRenderer = (inputText, ctext) => {
+        var output = "";
+        for (var i = 0; i < index; i++) {
+            if (inputText[i] == ctext[i + 1]) {
+                output += "<span class='correct'>" + inputText[i] + "</span>";
+            }
+            else {
+                output += "<span class='incorrect'>" + inputText[i] + "</span>";
+            }
+        }
+
+        for (var i = index; i < inputText.length; i++) {
+            output += "<span class='untyped'>" + inputText[i] + "</span>";
+        }
+        return output;
+    };
+
     return (
         <div className="main-box">
             <div className="text-box" onClick={focusHandler}>
-                {inputText}
+                <div dangerouslySetInnerHTML={{ __html: inputRenderer(inputText, ctext) }} />
             </div>
             <input onKeyDown={handleInputChange} autoFocus={true} className="inputBox" ref={inputRef}>
             </input>
