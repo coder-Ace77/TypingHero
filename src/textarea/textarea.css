@@ -5,64 +5,21 @@
     justify-content: center;
     align-items: center;
     display: grid;
-    grid-template-rows: 80%;
-    grid-template-columns: 80%;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 95%;
     font-family: Courier, monospace;
-    letter-spacing: 0.1px;
+    font-size: x-large;
+    /* letter-spacing: 0.1px; */
     /* height: 50vh; */
-}
-
-.side-menu:hover {
-    left: 0px;
-    transition: all ease-in-out 0.5s;
-}
-
-.side-menu {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    position: absolute;
-    height: 50vh;
-    width: 100px;
-    left: -50px;
-    border-radius: 17px;
-    background: #CEBA9B;
-    transition: all ease-in-out 0.5s;
-}
-
-.settings-icon:hover {
-    cursor: pointer;
-    rotate: 45deg;
-    transition: all ease 0.5s;
-}
-
-.settings-icon {
-    rotate: 0deg;
-    transition: all ease 0.5s;
 }
 
 .text-box {
     text-align: justify;
-    font-size: x-large;
     color: bisque;
 }
 
-
-
-div[contentEditable="true"]:focus {
-    outline: none;
-    /* This will remove the default focus border */
-    border: 1px solid transparent;
-    /* Set the border to transparent to hide it */
-}
-
-div[contentEditable="true"]::selection {
-    background-color: transparent;
-}
-
 .inputBox {
-    position: relative;
+    /* position: relative; */
     z-index: -100;
     width: 0px;
     height: 0px;
@@ -70,6 +27,12 @@ div[contentEditable="true"]::selection {
     outline: none;
     background-color: transparent;
     color: transparent;
+}
+
+.info-box {
+    display: flex;
+    justify-content: space-between;
+    color: bisque;
 }
 
 .correct {

@@ -6,12 +6,20 @@ var ctext = text;
 var textarray = text.split("");
 var userInput = [];
 var index = 0;
+var state = 0;
+var n_correct = 0;
 
 function TextArea() {
 
     const [inputText, setInputText] = useState("\u007C" + text.substring(1));
     const [inputFocus, setInputFocus] = useState(true);
+    const [speedText, setSpeedText] = useState(0);
+    const [timeText, setTimeText] = useState(30);
     const inputRef = useRef(null);
+
+    var time = 30;
+    var speed = 0;
+
 
     const backspaceHandler = (e) => {
         if (e.key != "Backspace") {
@@ -37,8 +45,10 @@ function TextArea() {
 
     const checkspace = (e) => {
         if (e.key == " " || ctext[index + 1] == " ") {
-            if (e.key == ctext[index + 1])
+            if (e.key == ctext[index + 1]) {
+                n_correct += 1;
                 return true;
+            }
             else
                 return false;
         }
@@ -46,12 +56,49 @@ function TextArea() {
     }
 
 
+    const stateHandler = () => {
+
+        // if 0 start the timer and set state 1 also set timer for given time after which set state to 2
+        if (state == 0) {
+            state = 1;
+            setInterval(() => {
+                //  time = timeText;
+                time = time - 1;
+                time = time >= 0 ? time : 0;
+                console.log("Time", time);
+                setTimeText(time);
+
+                if (time > 0) {
+                    speed = Math.floor(n_correct * 60 / (30 - time));
+                    console.log(n_correct, speed);
+                    setSpeedText(speed);
+                }
+
+            }, 1000);
+
+            setTimeout(() => {
+                state = 2;
+            }, 30 * 1000);
+
+            return true;
+        }
+        else if (state == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     const handleInputChange = (e) => {
 
         var x = true;
 
+        // check for state
+        x = stateHandler();
+
         // backspace handler
-        x = backspaceHandler(e);
+        x = x && backspaceHandler(e);
 
         // handle and validate input
         x = x && validateKey(e);
@@ -76,6 +123,7 @@ function TextArea() {
     const inputRenderer = (inputText, ctext) => {
         var output = "";
         for (var i = 0; i < index; i++) {
+
             if (inputText[i] == ctext[i + 1]) {
                 output += "<span class='correct'>" + inputText[i] + "</span>";
             }
@@ -92,6 +140,10 @@ function TextArea() {
 
     return (
         <div className="main-box">
+            <div className="info-box">
+                <span>{timeText}</span>
+                <span>{speedText}w/m</span>
+            </div>
             <div className="text-box" onClick={focusHandler}>
                 <div dangerouslySetInnerHTML={{ __html: inputRenderer(inputText, ctext) }} />
             </div>
